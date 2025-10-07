@@ -16,3 +16,15 @@ functions:
           cors: true
 plugins:
   - serverless-offline
+  - serverless-offline-watcher
+
+custom:
+  serverless-offline-watcher:
+    - path: app.js
+      command: echo "app.js was modified!"
+    - path: handler.js
+      command: echo "handler.js was modified!"
+    - path:
+      - routes
+      command:
+        - echo "routes folder or js file in cow folder was modified!"
