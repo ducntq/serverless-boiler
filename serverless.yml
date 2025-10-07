@@ -4,7 +4,7 @@ provider:
   runtime: nodejs18.x
 functions:
   api:
-    handler: handler.main
+    handler: dist/handler.main
     events:
       - http:
           path: /
@@ -20,11 +20,11 @@ plugins:
 
 custom:
   serverless-offline-watcher:
-    - path: app.js
-      command: echo "app.js was modified!"
-    - path: handler.js
-      command: echo "handler.js was modified!"
+    - path: app.ts
+      command: echo "app.ts was modified!"
+    - path: handler.ts
+      command: echo "handler.ts was modified!"
     - path:
       - routes
       command:
-        - echo "routes folder or js file in cow folder was modified!"
+        - echo "routes folder or ts file in cow folder was modified!"
