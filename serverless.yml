@@ -1,13 +1,14 @@
-# "org" ensures this Service is used with the correct Serverless Framework Access Key.
 org: ducntq
 service: serverless-boiler
 provider:
   name: aws
   runtime: nodejs22.x
   region: ap-southeast-1
+build:
+  esbuild: false
 functions:
   users:
-    handler: dist/users-handler.main
+    handler: packages/users/handler.main
     events:
       - http:
           path: /users
@@ -18,7 +19,7 @@ functions:
           method: ANY
           cors: true
   news:
-    handler: dist/news-handler.main
+    handler: packages/news/handler.main
     events:
       - http:
           path: /news
@@ -29,12 +30,10 @@ functions:
           method: ANY
           cors: true
 plugins:
+  - serverless-webpack
   - serverless-offline
-  - serverless-offline-watcher
 
 custom:
-  serverless-offline-watcher:
-    - path:
-      - routes
-      command:
-        - echo "routes folder or ts file in cow folder was modified!"
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true

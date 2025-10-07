@@ -1,9 +1,9 @@
 import serverless from 'serverless-http';
 import express from 'express';
-import newsRoutes from './routes/news';
+import usersRoutes from './userRoutes';
 
 const app = express();
 
-app.use('/news', newsRoutes);
+app.use('/users', usersRoutes);
 
 export const main = serverless(app);
