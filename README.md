@@ -1,3 +1,6 @@
+Disclaimer: This is an experiment for [Gemini Code Assist](https://codeassist.google/). All code is generated solely by Gemini Code Assist with model `gemini-2.5-pro`. This will be the only time that I made change and commit.
+
+
 # Serverless Boilerplate for AWS Lambda with Multiple HTTP Endpoints
 
 This is a boilerplate project for creating a serverless application with multiple HTTP endpoints using Node.js, Express.js, and the Serverless Framework.
