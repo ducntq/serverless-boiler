@@ -1,7 +1,10 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: ducntq
 service: serverless-boiler
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs22.x
+  region: ap-southeast-1
 functions:
   api:
     handler: dist/handler.main
