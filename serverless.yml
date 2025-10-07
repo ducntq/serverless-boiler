@@ -6,15 +6,26 @@ provider:
   runtime: nodejs22.x
   region: ap-southeast-1
 functions:
-  api:
-    handler: dist/handler.main
+  users:
+    handler: dist/users-handler.main
     events:
       - http:
-          path: /
+          path: /users
           method: ANY
           cors: true
       - http:
-          path: /{proxy+}
+          path: /users/{proxy+}
+          method: ANY
+          cors: true
+  news:
+    handler: dist/news-handler.main
+    events:
+      - http:
+          path: /news
+          method: ANY
+          cors: true
+      - http:
+          path: /news/{proxy+}
           method: ANY
           cors: true
 plugins:
@@ -23,10 +34,6 @@ plugins:
 
 custom:
   serverless-offline-watcher:
-    - path: app.ts
-      command: echo "app.ts was modified!"
-    - path: handler.ts
-      command: echo "handler.ts was modified!"
     - path:
       - routes
       command:
